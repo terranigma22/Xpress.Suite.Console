@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Xpress.Suite.ConsoleTools.Demo/Xpress.Suite.ConsoleTools.Demo.csproj" />
+  <Project Path="Xpress.Suite.ConsoleTools/Xpress.Suite.ConsoleTools.csproj" />
+</Solution>
