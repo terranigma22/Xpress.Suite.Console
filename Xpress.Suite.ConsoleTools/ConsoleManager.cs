@@ -48,7 +48,7 @@ public class ConsoleManager : IDisposable
         _colorScheme = theme switch
         {
             ConsoleTheme.Dark => ConsoleColorSchemes.Dark,
-            ConsoleTheme.HighContrast => ConsoleColorSchemes.HighContrast,
+            ConsoleTheme.Light => ConsoleColorSchemes.Light,
             _ => ConsoleColorSchemes.Default
         };
     }
@@ -77,14 +77,14 @@ public class ConsoleManager : IDisposable
         var (icon, color) = level switch
         {
             LogLevel.Trace      => ("🔍", ConsoleColor.DarkGray),
-            LogLevel.Debug      => ("🐛", ConsoleColor.Gray),
-            LogLevel.Info       => ("ℹ️", ConsoleColor.White),
+            LogLevel.Debug      => ("🐛", ConsoleColor.Magenta),
+            LogLevel.Info       => ("ℹ️", ConsoleColor.Gray),
             LogLevel.Warn       => ("⚠️", ConsoleColor.Yellow),
             LogLevel.Error      => ("❌", ConsoleColor.Red),
             LogLevel.Fatal      => ("💀", ConsoleColor.DarkRed),
             LogLevel.Success    => ("✅", ConsoleColor.Green),
             LogLevel.Fail       => ("⛔", ConsoleColor.Red),
-            _                   => ("ℹ️", ConsoleColor.White)
+            _                   => ("ℹ️", ConsoleColor.Gray)
         };
 
         // Usar el color específico del nivel o el del esquema
@@ -103,7 +103,6 @@ public class ConsoleManager : IDisposable
         lock (_lock)
         {
             Console.ForegroundColor = foregroundColor;
-            Console.BackgroundColor = _colorScheme.InfoBackground;
             Console.WriteLine(formattedMessage);
             Console.ForegroundColor = originalColor;
             Console.BackgroundColor = originalBackground;
@@ -436,7 +435,7 @@ public class ConsoleManager : IDisposable
 
     #region Progress Bar
 
-    public void ProgressBar(int current, int total, int width = 50, ConsoleColor color = ConsoleColor.White, string ? message = null)
+    public void ProgressBar(int current, int total, int width = 50, ConsoleColor color = ConsoleColor.Gray, string ? message = null)
     {
         var percentage = (double)current / total;
         var filled = (int)(width * percentage);

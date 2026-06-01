@@ -4,7 +4,7 @@ using Xpress.Suite.ConsoleTools.Enums;
 var console = ConsoleManager.Instance;
 
 // Configuración
-console.SetTheme(ConsoleTheme.Dark);
+console.SetTheme(ConsoleTheme.Light);
 console.SetMinLogLevel(LogLevel.Debug);
 
 // Header
@@ -65,7 +65,7 @@ console.BlankLine();
 console.WriteLine("\nProcessing:");
 for (int i = 0; i <= 100; i += 1)
 {
-    console.ProgressBar(i, 100, 30, ConsoleColor.Cyan);
+    console.ProgressBar(i, 100, 30);
     Thread.Sleep(50);
 }
 
